@@ -1,0 +1,26 @@
+{% extends 'templates/base.html' %}
+
+{% block content %}
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Article</th>
+      <th scope="col">Word (German)</th>
+      <th scope="col">Word (English)</th>
+      <th scope="col">Sentence</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for vocabulary in all_vocabularies %}
+        <tr>
+            <td> {{ forloop.counter }} </td>
+            <td> {{ vocabulary.article }} </td>
+            <td> {{ vocabulary.word_en }} </td>
+            <td> {{ vocabulary.word_de }} </td>
+            <td> {{ vocabulary.sentence }} </td>
+        </tr>
+        {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
