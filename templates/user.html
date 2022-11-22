@@ -2,24 +2,8 @@
 
 {% block content %}
 <br>
-
-{% include 'templates/article_count.html' %}
-
-<div class="row">
-    <div class="col">
-        <div class="card card-body">
-
-            <form method="get">
-                <p><b>Filter by:</b> {{my_filter.form}}
-                <button class="btn btn-primary" type="submit">Filter</button></p>
-            </form>
-
-        </div>
-    </div>
-</div>
-
-<br>
-
+<h5>Your word count: {{ data|length }} </h5>
+<a href="{% url 'add_vocabularies' user.id %}">Add vocabulary</a>
 <table class="table table-hover table-bordered">
   <thead>
     <tr>
@@ -31,13 +15,15 @@
     </tr>
   </thead>
   <tbody>
-      {% for vocabulary in all_vocabularies %}
+      {% for vocabulary in data %}
         <tr>
             <td> {{ forloop.counter }} </td>
             <td> {{ vocabulary.article }} </td>
             <td> {{ vocabulary.word_de|title }} </td>
             <td> {{ vocabulary.word_en|title }} </td>
             <td> {{ vocabulary.sentence }} </td>
+            <td><a class="btn btn-sm btn-info" href="{% url 'update_vocabulary' vocabulary.id %}">Update</a></td>
+            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_vocabulary' vocabulary.id %}">Delete</a></td>
         </tr>
         {% endfor %}
   </tbody>

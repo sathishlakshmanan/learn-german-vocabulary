@@ -1,0 +1,19 @@
+{% extends 'templates/base.html' %}
+
+{% block content %}
+
+<br>
+	<div class="col-md">
+		<div class="card card-body" id="acc-info">
+			<h5>Account Information</h5>
+			<hr>
+            <p>Name : {{user.user_name }} </p>
+            <p>Email : {{user.id}} </p>
+            <p>Total words created : {{total_words}}</p>
+            <p>Account created on : {{user.creation_time|date}}</p>
+            <br>
+            <a href="{% url 'delete_account' user.id %}">Delete my account</a>
+		</div>
+	</div>
+
+{% endblock %}

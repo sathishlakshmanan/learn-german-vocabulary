@@ -1,0 +1,24 @@
+{% extends 'templates/base.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Are you sure you want to delete your account? </h4>
+            <h5>(Warning! All of your data including the vocabularies you created will be deleted!</h5>
+            <br>
+            <form action="{% url 'delete_account' user.id %}" method="POST">
+            {% csrf_token %}
+            <a class="btn btn-warning"href="{% url 'index' %}">Cancel</a>
+
+            <input class="btn btn-danger" type="submit" name="Confirm">
+</form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

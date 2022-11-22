@@ -1,0 +1,16 @@
+{% extends 'templates/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br>
+
+<h4>Are you sure you want to delete word(de): <b>"{{vocabulary}}"</b>?</h4>
+<form action="{% url 'delete_vocabulary' vocabulary.id %}" method="POST">
+    {% csrf_token %}
+    <a class="btn btn-warning" href="{% url 'index' %}">Cancel</a>
+
+    <input class="btn btn-danger" type="submit" name="Confirm">
+</form>
+
+{% endblock %}
