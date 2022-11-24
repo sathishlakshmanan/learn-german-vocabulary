@@ -9,8 +9,6 @@ services:
     ports:
       - 8000:8000
     env_file: ./myproject/.env
-    environment:
-      - TZ=Europe/Berlin
     volumes:
       - .:/app
     depends_on:
@@ -29,12 +27,11 @@ services:
     image: mysql:latest
     env_file: ./myproject/.env
     volumes:
-      - ./MYSQL:/var/lib/mysql
-      #- django-mysql-data:/var/lib/mysql
+      - mysqldb_german_site:/var/lib/mysql
     ports:
       - 3307:3306
     restart: always
 
 volumes:
-  web-django:
-  django-mysql-data:
+  mysqldb_german_site:
+    external: true
