@@ -11,27 +11,27 @@ services:
     env_file: ./myproject/.env
     volumes:
       - .:/app
-    depends_on:
-      - db
+    #depends_on:
+    #- db
     restart: always
     command:
       - /bin/bash
       - -c
       - |
-        sleep 180
         python3 manage.py migrate
-        python3 manage.py runserver 0.0.0.0:8000
+        gunicorn -b :8000 myproject.wsgi
 
-  db:
-    container_name: django_mysqldb
-    image: mysql:latest
-    env_file: ./myproject/.env
-    volumes:
-      - mysqldb_german_site:/var/lib/mysql
-    ports:
-      - 3307:3306
-    restart: always
-
-volumes:
-  mysqldb_german_site:
-    external: true
+# database for development
+#   db:
+#     container_name: django_mysqldb
+#     image: mysql:latest
+#     env_file: ./myproject/.env
+#     volumes:
+#       - mysqldb_german_site:/var/lib/mysql
+#     ports:
+#       - 3307:3306
+#     restart: always
+#
+# volumes:
+#   mysqldb_german_site:
+#     external: true
