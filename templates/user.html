@@ -4,28 +4,32 @@
 <br>
 <h5>Your word count: {{ data|length }} </h5>
 <a href="{% url 'add_vocabularies' user.id %}">Add vocabulary</a>
+
+{% include 'templates/search_vocabulary.html' %}
+
 <table class="table table-hover table-bordered">
   <thead>
     <tr>
-      <th scope="col">No.</th>
-      <th scope="col">Article</th>
-      <th scope="col">Word (German)</th>
-      <th scope="col">Word (English)</th>
-      <th scope="col">Sentence</th>
+      <th style="text-align: center" scope="col">No.</th>
+      <th style="text-align: center" scope="col">Article</th>
+      <th style="text-align: center" scope="col">Word (German)</th>
+      <th style="text-align: center" scope="col">Word (English)</th>
+      <th style="text-align: center" scope="col">Sentence</th>
+      <th style="text-align: center" scope="col">Make changes</th>
     </tr>
   </thead>
   <tbody>
-      {% for vocabulary in data %}
-        <tr>
-            <td> {{ forloop.counter }} </td>
-            <td> {{ vocabulary.article }} </td>
-            <td> {{ vocabulary.word_de|title }} </td>
-            <td> {{ vocabulary.word_en|title }} </td>
-            <td> {{ vocabulary.sentence }} </td>
-            <td><a class="btn btn-sm btn-info" href="{% url 'update_vocabulary' vocabulary.id %}">Update</a></td>
-            <td><a class="btn btn-sm btn-danger" href="{% url 'delete_vocabulary' vocabulary.id %}">Delete</a></td>
-        </tr>
-        {% endfor %}
+    {% for vocabulary in data %}
+            <tr>
+                <td style="text-align: center"> {{ forloop.counter }} </td>
+                <td style="text-align: center"> {{ vocabulary.article }} </td>
+                <td style="text-align: center"> {{ vocabulary.word_de|title }} </td>
+                <td style="text-align: center"> {{ vocabulary.word_en|title }} </td>
+                <td style="text-align: center"> {{ vocabulary.sentence }} </td>
+                <td style="text-align: center"><a class="btn btn-sm btn-info" href="{% url 'update_vocabulary' vocabulary.id %}">Update</a>
+                <a class="btn btn-sm btn-danger" href="{% url 'delete_vocabulary' vocabulary.id %}">Delete</a></td>
+            </tr>
+    {% endfor %}
   </tbody>
 </table>
 {% endblock %}
