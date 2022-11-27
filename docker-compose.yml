@@ -8,7 +8,14 @@ services:
     image: django-web
     ports:
       - 8000:8000
-    env_file: ./myproject/.env
+    environment:
+      - SECRET_KEY
+      - DBNAME
+      - DBUSER
+      - DBPASS
+      - DBHOST
+      - DBPORT
+      - ALLOWED_HOSTS
     volumes:
       - .:/app
     #depends_on:
@@ -18,20 +25,24 @@ services:
       - /bin/bash
       - -c
       - |
+        sleep 180
         python3 manage.py migrate
-        gunicorn -b :8000 myproject.wsgi
+        python3 manage.py runserver 0.0.0.0:8000
+        #gunicorn -b :8000 myproject.wsgi
 
 # database for development
-#   db:
-#     container_name: django_mysqldb
-#     image: mysql:latest
-#     env_file: ./myproject/.env
-#     volumes:
-#       - mysqldb_german_site:/var/lib/mysql
-#     ports:
-#       - 3307:3306
-#     restart: always
-#
-# volumes:
-#   mysqldb_german_site:
-#     external: true
+  db:
+    container_name: django_mysqldb
+    image: mysql:latest
+    env_file: ./myproject/.env
+    volumes:
+      - newdb:/var/lib/mysql
+    ports:
+      - 3307:3306
+    restart: always
+
+volumes:
+  newdb:
+    external: true
+#mysqldb_german_site:
+#external: true
