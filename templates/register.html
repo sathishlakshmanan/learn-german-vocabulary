@@ -1,0 +1,25 @@
+<h3>REGISTER<h3>
+
+<form actions="" method="POST">
+
+    {% csrf_token %}
+    
+    {{register_form.username.label}}
+    {{register_form.username}}
+    <br>
+    {{register_form.email.label}}
+    {{register_form.email}}
+    <br>
+    {{register_form.password1.label}}
+    {{register_form.password1}}
+    <br>
+    {{register_form.password2.label}}
+    {{register_form.password2}}
+    <br><br>
+
+    <input type="submit" value="Register">
+
+    {{register_form.errors}}
+    <h5>Already have an account?</h5><a href="{% url 'user_login' %}">Login</a>
+
+</form>
