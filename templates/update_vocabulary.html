@@ -1,0 +1,18 @@
+{% extends 'templates/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<br>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for subset in form %}
+        <td>{{ subset }}</td>
+    {% endfor %}
+    <input type="submit" value="Update">
+
+</form>
+
+{% endblock %}
