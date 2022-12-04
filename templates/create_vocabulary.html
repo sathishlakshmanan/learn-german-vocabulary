@@ -9,10 +9,10 @@
     {% csrf_token %}
     {{ formset.management_form }}
     {% for subset in formset %}
-        {{ subset }}
+        <td>{{ subset }}</td>
         <br>
     {% endfor %}
-    <input type="submit" name="Add">
+    <input type="submit" value="Add">
 
 </form>
 
