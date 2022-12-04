@@ -1,3 +1,13 @@
+{% load static %}
+
+<style>
+    .hello-msg{
+        font-size: 18px;
+        color: #cca880;
+        margin-right: 20px;
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -6,13 +16,13 @@
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'user' user.id %}">My vocabulary</a>
+            <a class="nav-link" href="{% url 'my_vocabulary' %}">My vocabulary</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Practice</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Account</a>
+            <a class="nav-link" href="{% url 'myaccount' %}">Account</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Learn centre</a>
@@ -20,4 +30,7 @@
       </ul>
     </div>
   </div>
+  <span class="hello-msg">{{request.user}}</span>
+  <span><a href="{% url 'user_logout' %}">Logout</a>
+</span>
 </nav>
