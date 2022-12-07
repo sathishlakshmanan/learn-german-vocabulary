@@ -2,3 +2,5 @@ myproject/.env
 django/
 .git/
 db.sqlite3
+MYSQL/
+migrations/
