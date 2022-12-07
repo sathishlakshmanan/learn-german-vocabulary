@@ -1,6 +1,7 @@
 from pathlib import Path
 import environ
 import os
+#import dj_database_url
 
 env = environ.Env()
 environ.Env.read_env()
@@ -60,7 +61,7 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 # Database
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": env("DBNAME"),
         "USER": env("DBUSER"),
         "PASSWORD": env("DBPASS"),
@@ -99,8 +100,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "static/"
-#  STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 DEBUG = True
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Email credentials 
+EMAIL_BACKENED = env("EMAIL_BACKENED")
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_FROM = env("EMAIL_FROM")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env("EMAIL_PORT")
+
+EMAIL_USE_TLS = True
+PASSWORD_RESET_TIMEOUT = 3600
