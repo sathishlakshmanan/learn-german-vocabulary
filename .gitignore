@@ -4,3 +4,4 @@ django/
 db.sqlite3
 MYSQL/
 migrations/
+requirements.txt
