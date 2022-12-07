@@ -30,7 +30,14 @@
       </ul>
     </div>
   </div>
+  {% if user == AnonymousUser %}
+  <span><a href="{% url 'user_register' %}">Register</a></span>
+  <span>&emsp;</span>
+  <a href="{% url 'user_login' %}">Login</a>
+
+  {% else %}
   <span class="hello-msg">{{request.user}}</span>
   <span><a href="{% url 'user_logout' %}">Logout</a>
-</span>
+  </span>
+  {% endif %}
 </nav>

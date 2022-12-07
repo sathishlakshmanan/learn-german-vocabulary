@@ -7,12 +7,11 @@
 		<div class="card card-body" id="acc-info">
 			<h5>Account Information</h5>
 			<hr>
-            <p>Name : {{user.user_name }} </p>
-            <p>Email : {{user.id}} </p>
+            <p>Name : {{user}} </p>
+            <p>Email : {{mail}} </p>
             <p>Total words created : {{total_words}}</p>
-            <p>Account created on : {{user.creation_time|date}}</p>
+            <p>Account created on : {{date_joined}}</p>
             <br>
-            <a href="{% url 'delete_account' user.id %}">Delete my account</a>
 		</div>
 	</div>
 
