@@ -1,0 +1,11 @@
+asgiref
+Django
+django-environ
+mysqlclient
+psycopg2-binary
+sqlparse
+tzdata
+pytz
+django-filter
+gunicorn
+six
