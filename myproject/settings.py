@@ -1,7 +1,6 @@
 from pathlib import Path
 import environ
 import os
-#import dj_database_url
 
 env = environ.Env()
 environ.Env.read_env()
@@ -65,7 +64,7 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 # Database
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.mysql",
         "NAME": env("DBNAME"),
         "USER": env("DBUSER"),
         "PASSWORD": env("DBPASS"),
@@ -111,7 +110,7 @@ DEBUG = True
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# Email credentials 
+# Email credentials
 EMAIL_BACKENED = env("EMAIL_BACKENED")
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_FROM = env("EMAIL_FROM")
